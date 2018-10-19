@@ -43,7 +43,7 @@ module ActiveAdmin
     private
 
     def rails_app_rake(task)
-      system "cd #{app_dir}; rake #{task}"
+      Dir.chdir(app_dir) { system "rake #{task}" }
     end
 
     def base_dir

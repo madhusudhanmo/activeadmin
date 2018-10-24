@@ -51,7 +51,7 @@ module ActiveAdmin
     end
 
     def correctly_configured_app?
-      !(parallel ^ parallel_tests_setup?)
+      app_exists? && !(parallel ^ parallel_tests_setup?)
     end
 
     def app_exists?

@@ -14,7 +14,7 @@ module ActiveAdmin
         system("rm -Rf #{app_dir}")
       end
 
-      if File.exist? app_dir
+      if app_exists?
         puts "test app #{app_dir} already exists and correctly configured; skipping test app generation"
       else
         system "mkdir -p #{base_dir}"
@@ -52,6 +52,10 @@ module ActiveAdmin
 
     def correctly_configured_app?
       !(parallel ^ parallel_tests_setup?)
+    end
+
+    def app_exists?
+      File.exist? app_dir
     end
 
     def rails_app_rake(task)
